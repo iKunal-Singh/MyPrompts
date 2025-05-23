@@ -1,0 +1,174 @@
+/* Main layout for the prompt editor page (2 columns) */
+.prompt-editor-layout {
+  display: flex;
+  gap: 20px; /* Space between editor and metadata panel */
+  align-items: flex-start; /* Align items to the top */
+  background-color: #FFFFFF; /* Main background for the layout area */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  font-family: 'Inter', sans-serif;
+  min-height: calc(100vh - 180px); /* Adjust based on header/footer/margins */
+}
+
+/* Left column for the document title and Tiptap editor */
+.prompt-editor-main-column {
+  flex-grow: 1; /* Takes up available space */
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevents overflow issues with flex children */
+}
+
+/* Document title input field */
+.prompt-document-title-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  font-weight: 600;
+  border: 1px solid #D0D0D0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color: #333333;
+  background-color: #FDFDFD;
+}
+
+.prompt-document-title-input:focus {
+  border-color: var(--accent-sky-blue);
+  box-shadow: 0 0 0 2px rgba(173, 216, 230, 0.5);
+  outline: none;
+}
+
+/* Wrapper for Tiptap menu bar and editor content */
+.tiptap-editor-wrapper {
+  background-color: #FFFFFF; /* Can be same as main column or slightly different */
+  border-radius: 6px;
+  border: 1px solid #E0E0E0; /* Single border around menu and editor */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow editor to fill vertical space */
+}
+
+/* Tiptap editor menu bar */
+.prompt-editor-menubar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #E0E0E0; /* Separator between menu and editor content */
+  border-radius: 6px 6px 0 0; /* Rounded top corners */
+}
+
+.prompt-editor-menubar button {
+  background-color: transparent;
+  color: #333333;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.prompt-editor-menubar button:hover {
+  background-color: #E9ECEF;
+  color: #000000;
+}
+
+.prompt-editor-menubar button.is-active {
+  background-color: var(--accent-lavender);
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Tiptap editor content area - new class name */
+.prompt-editor-content-area .ProseMirror {
+  min-height: 300px; /* Increased min-height */
+  padding: 15px;
+  background-color: #FFFFFF;
+  color: #333333;
+  line-height: 1.6;
+  outline: none;
+  overflow-y: auto;
+  flex-grow: 1; /* Allow editor to expand */
+  border-radius: 0 0 6px 6px; /* Rounded bottom corners, if menu is separate */
+}
+
+/* Focus state for the entire editor wrapper, applied to ProseMirror for simplicity */
+.prompt-editor-content-area .ProseMirror:focus-within {
+  /* 
+    The border styling is now on .tiptap-editor-wrapper.
+    If you want a specific focus on ProseMirror itself, you can add it here.
+    For example: box-shadow: inset 0 0 0 1px var(--accent-sky-blue);
+  */
+}
+
+/* Basic styling for Tiptap elements */
+.prompt-editor-content-area .ProseMirror p {
+  margin-bottom: 0.75em;
+}
+
+.prompt-editor-content-area .ProseMirror ul,
+.prompt-editor-content-area .ProseMirror ol {
+  padding-left: 25px;
+  margin-bottom: 0.75em;
+}
+
+.prompt-editor-content-area .ProseMirror li > p {
+  margin-bottom: 0.25em;
+}
+
+.prompt-editor-content-area .ProseMirror strong {
+  font-weight: bold;
+}
+
+.prompt-editor-content-area .ProseMirror em {
+  font-style: italic;
+}
+
+.prompt-editor-content-area .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Right column for the metadata panel */
+.prompt-editor-side-column {
+  width: 320px; /* Default width for metadata panel */
+  flex-shrink: 0; /* Prevent panel from shrinking */
+  /* The MetadataPanel.css will handle its internal styling (background, border-radius etc) */
+  /* This ensures the column itself just positions the panel correctly */
+  height: 100%; /* Attempt to match height, but panel has its own scroll */
+}
+
+/* Ensure MetadataPanel takes full height of its column if needed */
+.prompt-editor-side-column .metadata-panel {
+  height: 100%;
+  border-radius: 8px; /* Apply consistent border radius if not already */
+}
+
+/* Save Prompt Button Styling */
+.prompt-save-button {
+  background-color: var(--accent-sky-blue); /* Use accent color */
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 20px; /* Space above the button */
+  align-self: flex-start; /* Align to the start of the main column if it's a flex item */
+}
+
+.prompt-save-button:hover {
+  background-color: #007BFF; /* Darker shade on hover */
+}
