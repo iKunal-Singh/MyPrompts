@@ -1,0 +1,56 @@
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: #FFFFFF; /* Primary background */
+  color: #333333; /* Text color */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #F8F9FA; /* A slightly off-white for sidebar */
+  padding: 20px;
+  border-right: 1px solid #E0E0E0; /* Soft border */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Soft shadow */
+  border-radius: 0 8px 8px 0; /* Rounded corners on the right side */
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
+  text-decoration: none;
+  color: #333333;
+  padding: 10px 15px;
+  display: block;
+  border-radius: 6px; /* Rounded corners for links */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active { /* Assuming active class for active link styling */
+  background-color: #E6E6FA; /* Soft lavender for hover/active */
+  color: #000000;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto; /* Scroll if content overflows */
+}
+
+/* Placeholder for content cards/areas within main-content */
+.content-card {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}

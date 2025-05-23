@@ -1,0 +1,67 @@
+/* Project Card Styling */
+.project-card {
+  background-color: #FFFFFF;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Soft shadow */
+  padding: 20px;
+  margin-bottom: 20px; /* Space between cards if in a list */
+  font-family: 'Inter', sans-serif; /* Ensure Inter font */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid #EAEAEA; /* Light border for definition */
+}
+
+.project-card:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 12px;
+}
+
+.project-card-title {
+  font-size: 1.3em; /* Larger title */
+  font-weight: 600;
+  color: #333333;
+  margin: 0; /* Remove default margin */
+  line-height: 1.3;
+}
+
+.project-card-tag {
+  font-size: 0.8em;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 15px; /* Pill-shaped tag */
+  color: #333333; /* Text color for tags, background set by JS */
+  white-space: nowrap; /* Prevent tag text from wrapping */
+  margin-left: 10px; /* Space from title */
+}
+
+.project-card-description {
+  font-size: 0.95em;
+  color: #555555; /* Slightly lighter text for description */
+  margin-bottom: 15px;
+  line-height: 1.5;
+  flex-grow: 1; /* Allow description to take available space */
+}
+
+.project-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85em;
+  color: #777777; /* Subdued color for footer info */
+  border-top: 1px solid #F0F0F0; /* Soft separator line */
+  padding-top: 12px;
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+.project-card-prompts,
+.project-card-updated {
+  /* Specific styling for these if needed */
+}

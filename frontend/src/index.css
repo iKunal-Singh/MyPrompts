@@ -1,0 +1,118 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Font settings */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6; /* Improved readability */
+  font-weight: 400;
+
+  /* Color scheme */
+  color: #333333; /* Primary text color */
+  background-color: #FFFFFF; /* Primary background */
+
+  /* Accent colors (can be used for borders, highlights, etc.) */
+  --accent-lavender: #E6E6FA;
+  --accent-sky-blue: #ADD8E6;
+  --accent-soft-green: #90EE90;
+
+  /* Font synthesis and rendering */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%; /* For older WebKit browsers */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex; /* Ensure body takes full height for layout */
+  flex-direction: column; /* Allow header/footer if added later */
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent-sky-blue); /* Use accent for links */
+  text-decoration: none; /* Remove underline by default */
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #007BFF; /* A slightly darker blue for hover */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333333; /* Ensure headings use primary text color */
+  margin-top: 0; /* Remove default top margin for headings */
+  font-weight: 600; /* Slightly bolder headings */
+}
+
+h1 {
+  font-size: 2.2em; /* Slightly smaller default H1 */
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 0.4em;
+}
+
+p {
+  margin-bottom: 1em; /* Default paragraph spacing */
+}
+
+button, input[type="button"], input[type="submit"] {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.7em 1.4em; /* Slightly more padding */
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--accent-sky-blue); /* Use accent for buttons */
+  color: #FFFFFF; /* White text on buttons */
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Soft shadow for buttons */
+}
+
+button:hover {
+  background-color: #007BFF; /* Darker blue for hover */
+  border-color: #0056b3;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color; /* Default focus outline */
+}
+
+/* General container/card styling */
+.content-card { /* This class is used in placeholder pages and can be generic */
+  background-color: #FFFFFF;
+  padding: 25px; /* More padding */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer, more diffused shadow */
+  margin-bottom: 25px;
+}
+
+/* Optional: Global scrollbar styling for a more modern look (Webkit only) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
