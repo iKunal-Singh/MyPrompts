@@ -1,0 +1,17 @@
+.my-projects-page {
+  /* Can add page-specific styles here if needed, like a title */
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 25px; /* Space between cards */
+  padding: 5px 0; /* Padding around the grid */
+}
+
+/* Adjustments for smaller screens if needed */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}
