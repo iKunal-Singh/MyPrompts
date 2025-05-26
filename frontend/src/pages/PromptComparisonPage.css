@@ -1,0 +1,218 @@
+/* Main Page Styling */
+.prompt-comparison-page {
+  padding: 20px;
+  background-color: #f9f9fc; /* Light, neutral background */
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.comparison-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.comparison-header h1 {
+  font-size: 2.2em;
+  color: #2c3e50; /* Dark blue-grey */
+  font-weight: 600;
+}
+
+/* Action Buttons Styling */
+.comparison-actions-top {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.comparison-actions-top button {
+  padding: 0.7em 1.4em; /* Matched to global button style in index.css */
+  font-size: 0.95em; /* Keep slightly smaller font as a stylistic choice */
+  font-weight: 500;
+  border-radius: 8px; /* Matched to global button style in index.css */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, border-color 0.2s ease; /* Added border-color transition */
+  border: 1px solid transparent;
+}
+
+.comparison-actions-top button:nth-child(1) { /* Select Best */
+  background-color: var(--accent-success-light, #e6ffed); /* Light green */
+  color: var(--accent-success, #28a745);
+  border-color: var(--accent-success-border, #b8e6c3);
+}
+.comparison-actions-top button:nth-child(1):hover {
+  background-color: var(--accent-success, #28a745);
+  color: #fff;
+}
+
+.comparison-actions-top button:nth-child(2) { /* Export */
+  background-color: var(--accent-info-light, #e3f2fd); /* Light blue */
+  color: var(--accent-info, #007bff);
+  border-color: var(--accent-info-border, #b3d7f7);
+}
+.comparison-actions-top button:nth-child(2):hover {
+  background-color: var(--accent-info, #007bff);
+  color: #fff;
+}
+
+.comparison-actions-top button:nth-child(3) { /* Duplicate */
+  background-color: var(--accent-warning-light, #fff8e1); /* Light yellow/orange */
+  color: var(--accent-warning, #ffc107);
+  border-color: var(--accent-warning-border, #ffeeba);
+}
+.comparison-actions-top button:nth-child(3):hover {
+  background-color: var(--accent-warning, #ffc107);
+  color: #212529; /* Darker text for yellow hover for better contrast */
+}
+
+
+/* Comparison Container and Columns */
+.comparison-container {
+  display: flex;
+  gap: 25px; /* Space between columns */
+  justify-content: space-around; /* Distribute space */
+}
+
+.prompt-column {
+  background-color: #ffffff;
+  border: 1px solid #e0e7ef; /* Softer border */
+  border-radius: 10px; /* More rounded corners */
+  padding: 25px;
+  width: 48%; /* Each column takes roughly half the space */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between sections within a column */
+}
+
+.prompt-column h2 {
+  font-size: 1.6em;
+  color: #34495e; /* Darker blue for titles */
+  margin-top: 0;
+  margin-bottom: 10px; /* Consistent margin */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaecee;
+  text-align: center;
+}
+
+/* Section Styling (Parameters, Content, Output) */
+.prompt-section {
+  padding: 15px;
+  border: 1px solid #f0f3f6; /* Very light border for sections */
+  border-radius: 8px;
+  background-color: #fbfdff; /* Slightly off-white background for sections */
+}
+
+.prompt-section h3 {
+  font-size: 1.15em;
+  color: #4a627a; /* Mid-tone blue */
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Parameters List */
+.parameters-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.parameters-section li {
+  font-size: 0.95em;
+  color: #555;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e8edf1; /* Dashed separator for params */
+}
+.parameters-section li:last-child {
+  border-bottom: none;
+}
+.parameters-section li strong {
+  color: #333;
+  margin-right: 8px;
+}
+
+/* Content and Output Display */
+.prompt-content-display,
+.prompt-output-display {
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #444;
+  background-color: #ffffff; /* White background for content/output area */
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #e8edf1; /* Border for the content itself */
+  min-height: 100px; /* Minimum height for these areas */
+  overflow-wrap: break-word; /* Break long words */
+}
+
+.prompt-content-display p:first-child,
+.prompt-output-display p:first-child {
+  margin-top: 0;
+}
+.prompt-content-display p:last-child,
+.prompt-output-display p:last-child {
+  margin-bottom: 0;
+}
+
+/* Loading and Error Messages */
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.2em;
+  color: #555;
+}
+.error-message {
+  color: #d9534f; /* Bootstrap danger color */
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) { /* Medium screens / tablets */
+  .comparison-container {
+    flex-direction: column;
+    align-items: center; /* Center columns when stacked */
+  }
+  .prompt-column {
+    width: 90%; /* Columns take more width when stacked */
+    max-width: 700px; /* Max width for readability */
+    margin-bottom: 25px; /* Space between stacked columns */
+  }
+  .prompt-column:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) { /* Smaller tablets / large phones */
+  .comparison-header h1 {
+    font-size: 1.8em;
+  }
+  .comparison-actions-top {
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 10px;
+  }
+  .comparison-actions-top button {
+    width: calc(50% - 10px); /* Two buttons per row on smaller screens */
+  }
+  .comparison-actions-top button:last-child { /* Make last button full width if odd number */
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) { /* Small phones */
+  .prompt-column {
+    padding: 20px;
+  }
+  .prompt-column h2 {
+    font-size: 1.4em;
+  }
+  .prompt-section h3 {
+    font-size: 1.05em;
+  }
+  .comparison-actions-top button {
+    width: 100%; /* Full width buttons */
+  }
+}

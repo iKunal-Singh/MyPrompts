@@ -12,9 +12,25 @@
   background-color: #FFFFFF; /* Primary background */
 
   /* Accent colors (can be used for borders, highlights, etc.) */
-  --accent-lavender: #E6E6FA;
-  --accent-sky-blue: #ADD8E6;
+  --accent-lavender: #E6E6FA; /* Main pastel lavender */
+  --accent-lavender-light: #f5f5fd; /* Lighter version for backgrounds */
+  --accent-lavender-border: #dcdcfc; /* Border for lavender elements */
+
+  --accent-sky-blue: #ADD8E6; /* Main pastel sky blue */
+  --accent-sky-blue-light: #e7f5ff; /* Lighter version for backgrounds */
+  --accent-sky-blue-border: #c4e6f5; /* Border for sky blue elements */
+  
   --accent-soft-green: #90EE90;
+  --accent-success: #28a745; /* For success states, like in PromptComparisonPage */
+  --accent-success-light: #e6ffed;
+  --accent-success-border: #b8e6c3;
+  --accent-info: #007bff; /* For info states */
+  --accent-info-light: #e3f2fd;
+  --accent-info-border: #b3d7f7;
+  --accent-warning: #ffc107; /* For warning states */
+  --accent-warning-light: #fff8e1;
+  --accent-warning-border: #ffeeba;
+
 
   /* Font synthesis and rendering */
   font-synthesis: none;

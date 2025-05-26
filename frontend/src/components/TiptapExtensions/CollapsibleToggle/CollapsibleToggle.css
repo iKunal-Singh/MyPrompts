@@ -1,0 +1,94 @@
+/* CollapsibleToggleNode.js and CollapsibleToggleView.jsx related styles */
+
+/* Wrapper for the entire node view if needed (NodeViewWrapper) */
+.collapsible-toggle-node-view {
+  margin: 1em 0;
+  border: 1px solid #e0e0e0; /* Light border around the whole toggle */
+  border-radius: 6px;
+  background-color: #f9f9f9; /* Slightly off-white background */
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-toggle-node-view.is-open {
+  background-color: #fff; /* White background when open */
+}
+
+/* Styling for the <details> element itself, which is our NodeViewWrapper */
+.collapsible-toggle-node-view details {
+  width: 100%;
+}
+
+/* Styling for the <summary> element */
+/* This summary is rendered by Tiptap's renderHTML from CollapsibleToggleNode.js */
+/* We target it here for styling. */
+.collapsible-toggle-node-view summary {
+  padding: 0.6em 1em;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none; /* Remove default focus outline on summary */
+  color: #333;
+  display: flex; /* Use flex to align arrow and text */
+  align-items: center;
+  transition: background-color 0.2s ease;
+  border-radius: 6px 6px 0 0; /* Rounded corners for the top part */
+}
+
+.collapsible-toggle-node-view.is-open summary {
+  border-bottom: 1px solid #e0e0e0; /* Separator when open */
+}
+
+
+.collapsible-toggle-node-view summary:hover {
+  background-color: #f0f0f0; /* Slight hover effect */
+}
+
+/* Default browser arrow styling can be inconsistent. Hiding it and using our own. */
+.collapsible-toggle-node-view summary::-webkit-details-marker {
+  display: none;
+}
+.collapsible-toggle-node-view summary::marker { /* For Firefox */
+  display: none; 
+}
+
+/* Custom Arrow Icon */
+.collapsible-toggle-node-view summary::before {
+  content: '▶'; /* Default: right-pointing triangle for closed state */
+  font-size: 0.7em; /* Smaller arrow */
+  margin-right: 10px;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+  color: #555;
+}
+
+.collapsible-toggle-node-view.is-open summary::before {
+  transform: rotate(90deg); /* Rotate to down-pointing triangle for open state */
+}
+
+/* Styling for the content area (NodeViewContent) */
+/* This is the div where Tiptap renders the node's content */
+.collapsible-toggle-node-view .content-area {
+  padding: 0.5em 1em 1em calc(1em + 10px + 0.7em); /* Left padding to align with summary text after arrow */
+  /* border-top: 1px solid #e0e0e0; /* Separator line if summary doesn't have one when open */
+}
+
+/* Ensure nested elements inside the content area look good */
+.collapsible-toggle-node-view .content-area p:first-child {
+  margin-top: 0.5em; /* Add some space if the first child is a paragraph */
+}
+.collapsible-toggle-node-view .content-area p:last-child {
+  margin-bottom: 0;
+}
+
+/* Placeholder text for the summary if it's part of the React Node View (not currently used in the final approach) */
+.toggle-summary-placeholder {
+  color: #aaa;
+  font-style: italic;
+  user-select: none; /* Make it non-selectable */
+}
+
+/* If the summary itself is part of the NodeViewContent (first child) */
+.collapsible-toggle-node-view .content-area > p:first-child {
+  /* This would be the editable summary if we went that route */
+  /* margin-bottom: 0.5em; */
+  /* font-weight: bold; /* Example to make it look like a summary */
+}

@@ -1,0 +1,117 @@
+/* General Explore Page Styling */
+.explore-page {
+  padding: 20px;
+  background-color: #f4f6f8; /* Light grey-blue background for the page */
+  font-family: 'Inter', sans-serif; /* Consistent font */
+  min-height: calc(100vh - 60px); /* Full viewport height minus navbar */
+}
+
+/* Header Styling */
+.explore-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.explore-header h1 {
+  font-size: 2.8em; /* Larger title */
+  color: #2c3e50; /* Dark blue-grey */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.explore-header .explore-subtitle {
+  font-size: 1.1em;
+  color: #576c7f; /* Softer text color */
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search Bar Styling */
+.search-bar-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.explore-search-bar {
+  width: 100%;
+  max-width: 550px; /* Max width for search bar */
+  padding: 15px 20px; /* More padding */
+  font-size: 1em;
+  border: 1px solid #dce1e6; /* Lighter border */
+  border-radius: 25px; /* Pill shape */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explore-search-bar:focus {
+  outline: none;
+  border-color: var(--accent-sky-blue); /* Blue border on focus */
+  box-shadow: 0 0 0 3px rgba(102, 178, 255, 0.2); /* Subtle glow */
+}
+
+/* Content Section Styling */
+.explore-section {
+  margin-bottom: 40px; /* Space between sections */
+}
+
+.explore-section h2 {
+  font-size: 1.8em; /* Section title size */
+  color: #34495e; /* Slightly softer dark blue-grey */
+  margin-bottom: 20px; /* Space below section title */
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e6ed; /* Light separator line */
+  font-weight: 600;
+}
+
+/* Grid for Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+  gap: 25px; /* Space between cards */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .explore-header h1 {
+    font-size: 2.2em;
+  }
+  .explore-header .explore-subtitle {
+    font-size: 1em;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .explore-page {
+    padding: 15px;
+  }
+  .explore-header {
+    padding: 15px;
+  }
+  .explore-header h1 {
+    font-size: 1.8em;
+  }
+   .explore-header .explore-subtitle {
+    font-size: 0.9em;
+  }
+  .explore-search-bar {
+    padding: 12px 15px;
+    font-size: 0.95em;
+  }
+  .explore-section h2 {
+    font-size: 1.5em;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 20px;
+  }
+}

@@ -69,7 +69,7 @@
   padding: 8px 12px;
   margin-right: 5px;
   margin-bottom: 5px;
-  border-radius: 4px;
+  border-radius: 6px; /* Changed from 4px */
   cursor: pointer;
   font-size: 0.95em;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -107,6 +107,44 @@
     For example: box-shadow: inset 0 0 0 1px var(--accent-sky-blue);
   */
 }
+
+/* Styling for Code Blocks */
+.prompt-editor-content-area .ProseMirror pre {
+  background: #f0f2f5; /* Slightly lighter than typical #f0f0f0 for a softer look */
+  border-radius: 6px; /* Consistent with other radius */
+  color: #334155; /* Darker text for better contrast */
+  font-family: 'Fira Code', 'Courier New', Courier, monospace; /* Prioritize Fira Code if available */
+  padding: 0.8em 1.2em; /* Adjusted padding */
+  margin: 1em 0; /* Space around the code block */
+  overflow-x: auto; /* Allow horizontal scrolling for long lines */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.prompt-editor-content-area .ProseMirror pre code {
+  font-family: inherit; /* Inherit font family from pre */
+  background: none; /* No separate background for code inside pre */
+  color: inherit; /* Inherit color */
+  padding: 0; /* No padding for code inside pre */
+  border-radius: 0; /* No border-radius for code inside pre */
+  font-size: 0.95em; /* Slightly smaller font size for code */
+}
+
+/* Styling for Inline Code */
+.prompt-editor-content-area .ProseMirror code {
+  background: #e2e8f0; /* Lighter background for inline code */
+  border-radius: 4px; /* Smaller radius for inline */
+  padding: 0.2em 0.4em; /* Tighter padding */
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  color: #1e293b; /* Darker text for inline code */
+  font-size: 0.85em; /* Slightly smaller than surrounding text */
+  border: 1px solid #cbd5e1; /* Subtle border */
+}
+
+/* Ensure inline code within other elements (like headings, lists) doesn't break flow too much */
+h1 code, h2 code, h3 code, li code, p code {
+  font-size: 0.85em; /* Consistent inline code size */
+}
+
 
 /* Basic styling for Tiptap elements */
 .prompt-editor-content-area .ProseMirror p {
@@ -146,6 +184,193 @@
   /* The MetadataPanel.css will handle its internal styling (background, border-radius etc) */
   /* This ensures the column itself just positions the panel correctly */
   height: 100%; /* Attempt to match height, but panel has its own scroll */
+  background-color: #f8f9fa; /* Light background for the side column itself */
+}
+
+/* Tabs container styling */
+.tabs-container {
+  display: flex;
+  background-color: #e9ecef; /* Tab bar background */
+  border-bottom: 1px solid #dee2e6; /* Separator line for tabs */
+  border-radius: 6px 6px 0 0; /* Match top corners of side column if it has a border */
+}
+
+.tab-button {
+  flex-grow: 1;
+  padding: 12px 15px; /* Increased padding for better touch targets */
+  cursor: pointer;
+  border: none;
+  background-color: transparent; /* Tabs are transparent by default */
+  border-right: 1px solid #dee2e6; /* Separator between tabs */
+  font-size: 0.9em;
+  font-weight: 500; /* Slightly bolder for readability */
+  color: #495057; /* Default tab text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition */
+}
+
+.tab-button:last-child {
+  border-right: none; /* No right border for the last tab */
+}
+
+.tab-button.active {
+  background-color: #f8f9fa; /* Active tab matches the content area background */
+  color: var(--accent-sky-blue); /* Use accent color for active tab text/icon */
+  border-bottom: 2px solid var(--accent-sky-blue); /* Prominent underline for active tab */
+  margin-bottom: -1px; /* Overlap bottom border for seamless look with content */
+  font-weight: 600; /* Make active tab text bolder */
+}
+
+.tab-button:hover:not(.active) {
+  background-color: #dee2e6; /* Hover effect for non-active tabs */
+  color: #000;
+}
+
+/* Tab content area styling */
+.tab-content {
+  padding: 20px; /* Padding for the content within tabs */
+  flex-grow: 1;
+  overflow-y: auto; /* Allow scrolling within tab content */
+  background-color: #f8f9fa; /* Consistent background for tab content area */
+  border-radius: 0 0 6px 6px; /* Match bottom corners */
+}
+
+
+/* Styling for individual panels within the side column - panel itself has minimal style now */
+.metadata-panel, .agent-execution-panel {
+  /* Panels now rely on .tab-content for padding and background */
+}
+
+/* Common panel title styling */
+.metadata-panel h4, .agent-execution-panel h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #343a40; /* Darker title color */
+  font-size: 1.1em; /* Slightly larger title */
+  font-weight: 600;
+  border-bottom: 1px solid #e9ecef; /* Lighter separator for title */
+  padding-bottom: 10px;
+}
+
+/* Common form group styling */
+.form-group {
+  margin-bottom: 18px; /* Slightly more space between form groups */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px; /* Space between label and input */
+  font-weight: 500; /* Medium weight for labels */
+  font-size: 0.9em;
+  color: #495057; /* Label text color */
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px; /* Comfortable padding */
+  border: 1px solid #ced4da; /* Standard border color */
+  border-radius: 6px; /* Changed from 4px */
+  box-sizing: border-box;
+  font-size: 0.95em;
+  background-color: #fff; /* White background for inputs */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent-sky-blue);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Bootstrap-like focus glow */
+  outline: none;
+}
+
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-group select {
+  appearance: none; /* Remove default system appearance */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+
+/* Agent Execution Panel specific styles */
+.agent-execution-panel button[type="button"] { /* More specific selector for execute button */
+  padding: 0.7em 1.4em; /* Adjusted to be closer to global button style */
+  background-color: var(--accent-sky-blue);
+  color: white;
+  border: none;
+  border-radius: 6px; /* Changed from 4px */
+  cursor: pointer;
+  font-size: 0.95em; /* Adjusted font size slightly for consistency with other panel elements */
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease;
+  width: 100%; 
+  margin-top: 10px; 
+}
+
+.agent-execution-panel button[type="button"]:hover {
+  background-color: #007bff; /* Darker shade for hover */
+}
+
+.agent-execution-panel button[type="button"]:disabled {
+  background-color: #ced4da; /* Greyed out when disabled */
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.execution-result {
+  margin-top: 20px;
+  padding: 12px 15px; /* Consistent padding */
+  border: 1px solid #e0e0e0; /* Lighter border for result area */
+  border-radius: 6px; /* Changed from 4px */
+  background-color: #ffffff; /* White background for clarity */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 350px; /* Increased max height */
+  overflow-y: auto;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+  font-family: 'Menlo', 'Monaco', 'Consolas', monospace; /* Monospace font for code-like output */
+  font-size: 0.9em;
+  color: #333;
+}
+
+.execution-result h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #343a40;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.error-message {
+  color: #721c24; /* Darker red for text */
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px 15px; /* Consistent padding */
+  border-radius: 6px; /* Changed from 4px */
+  margin-top: 15px; /* Space above error message */
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+.generated-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px; /* Changed from 4px */
+  margin-top: 10px;
+  border: 1px solid #dee2e6; /* Light border for the image */
 }
 
 /* Ensure MetadataPanel takes full height of its column if needed */

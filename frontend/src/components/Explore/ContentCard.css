@@ -1,0 +1,109 @@
+.content-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; /* More rounded corners */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, slightly larger shadow */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: 100%; /* Ensure cards take full width of their grid cell */
+  max-width: 300px; /* Max width for a card */
+  min-height: 220px; /* Minimum height to ensure some consistency */
+  justify-content: space-between; /* Distribute space between content and button */
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 120px; /* Fixed height for image placeholders */
+  background-color: #f0f2f5; /* Light grey placeholder background */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image covers the placeholder area */
+}
+
+.card-icon-placeholder,
+.card-icon-placeholder-doc {
+  font-size: 3rem; /* Larger icon */
+  color: #ced4da; /* Softer icon color */
+  text-align: center;
+  margin-bottom: 15px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow content to take available space */
+}
+
+.card-content h3 {
+  font-size: 1.15em; /* Slightly larger title */
+  color: #343a40; /* Darker text for titles */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 0.9em;
+  color: #6c757d; /* Softer text for description */
+  line-height: 1.5;
+  flex-grow: 1; /* Allow description to take available space */
+  margin-bottom: 15px;
+}
+
+.card-action-button {
+  background-color: var(--accent-sky-blue-light); /* Pastel blue */
+  color: var(--accent-sky-blue); /* Darker blue text for contrast */
+  border: 1px solid var(--accent-sky-blue-border);
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9em;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: auto; /* Push button to the bottom */
+}
+
+.card-action-button:hover {
+  background-color: var(--accent-sky-blue);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Specific styling for documentation cards to make them stand out if needed */
+.content-card.documentation {
+  background-color: #fdfdfe; /* Slightly different background */
+}
+
+.content-card.documentation .card-action-button {
+  background-color: var(--accent-lavender-light); /* Pastel lavender for documentation */
+  color: var(--accent-lavender);
+  border-color: var(--accent-lavender-border);
+}
+
+.content-card.documentation .card-action-button:hover {
+  background-color: var(--accent-lavender);
+  color: #fff;
+}
