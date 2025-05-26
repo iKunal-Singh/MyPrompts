@@ -3,6 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const projectRoutes = require('./routes/projectRoutes');
+const connectDB = require('../../shared/db'); // Import connectDB
+
+// Connect to MongoDB
+connectDB('Project-Service');
 
 const app = express();
 const PORT = process.env.PORT || 3002;

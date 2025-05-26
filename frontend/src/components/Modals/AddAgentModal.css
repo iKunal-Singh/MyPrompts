@@ -1,0 +1,154 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it's on top */
+}
+
+.modal-content {
+  background-color: #FFFFFF;
+  padding: 30px; /* More padding */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15); /* More pronounced shadow */
+  width: 100%;
+  max-width: 500px; /* Max width for the modal */
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px; /* Adjusted position */
+  right: 15px; /* Adjusted position */
+  background: none;
+  border: none;
+  font-size: 1.8em; /* Larger close button */
+  cursor: pointer;
+  color: #AAAAAA;
+  transition: color 0.2s ease;
+}
+
+.modal-close-button:hover {
+  color: #333333;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5em; /* Larger title */
+  color: #333333;
+  text-align: center;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between label and input */
+}
+
+.form-group label {
+  font-size: 0.95em; /* Slightly larger label */
+  font-weight: 500;
+  color: #444444;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px; /* More padding for inputs */
+  font-size: 1em; /* Standard font size for inputs */
+  border: 1px solid #CED4DA; /* Softer border */
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #FDFDFD;
+  color: #333333;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-sky-blue);
+  box-shadow: 0 0 0 3px rgba(173, 216, 230, 0.4); /* Slightly larger glow */
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px; /* Taller textarea */
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center; /* Adjusted position */
+  background-size: 1.1em; /* Adjusted size */
+  padding-right: 35px;
+}
+
+.form-group small {
+  font-size: 0.8em;
+  color: #6c757d;
+  margin-top: -5px; /* Adjust spacing */
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 12px; /* Space between buttons */
+  margin-top: 15px; /* Space above action buttons */
+}
+
+.form-actions .submit-btn,
+.form-actions .cancel-btn {
+  padding: 10px 20px; /* Standard padding */
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.form-actions .submit-btn {
+  background-color: var(--accent-sky-blue);
+  color: #FFFFFF;
+}
+.form-actions .submit-btn:hover {
+  background-color: #007BFF;
+}
+
+.form-actions .cancel-btn {
+  background-color: #F8F9FA;
+  color: #333333;
+  border-color: #CED4DA;
+}
+.form-actions .cancel-btn:hover {
+  background-color: #E9ECEF;
+}
+
+.modal-error {
+  color: #DC3545; /* Red for error messages */
+  background-color: rgba(220, 53, 69, 0.1); /* Light red background */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  text-align: center;
+}

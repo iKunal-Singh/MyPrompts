@@ -1,0 +1,119 @@
+.metadata-panel {
+  width: 320px; /* Fixed width for the panel */
+  min-width: 280px; /* Minimum width */
+  padding: 20px;
+  background-color: #F8F9FA; /* Slightly different background from main content cards */
+  border-left: 1px solid #E0E0E0; /* Separator from the editor */
+  border-radius: 0 8px 8px 0; /* Rounded corners on the right side, assuming editor is on left */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.03); /* Subtle shadow */
+  font-family: 'Inter', sans-serif;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Space between metadata fields */
+  overflow-y: auto; /* Allow scrolling if content exceeds height */
+  height: calc(100% - 40px); /* Adjust based on container padding if needed */
+}
+
+.metadata-panel-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 10px; /* Space below the title */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.metadata-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Space between label and input */
+}
+
+.metadata-field label {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #555555;
+}
+
+.metadata-field input[type="text"],
+.metadata-field select,
+.metadata-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95em;
+  border: 1px solid #D0D0D0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #FFFFFF; /* White background for inputs */
+  color: #333333;
+  font-family: 'Inter', sans-serif;
+}
+
+.metadata-field input[type="text"]:focus,
+.metadata-field select:focus,
+.metadata-field textarea:focus {
+  border-color: var(--accent-sky-blue); /* Highlight from index.css */
+  box-shadow: 0 0 0 2px rgba(173, 216, 230, 0.4); /* Soft glow */
+  outline: none;
+}
+
+.metadata-field textarea {
+  resize: vertical; /* Allow vertical resize, disable horizontal */
+  min-height: 60px;
+}
+
+.metadata-field select {
+  appearance: none; /* Remove default system appearance */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1em;
+  padding-right: 30px; /* Make space for the arrow */
+}
+
+.metadata-section-divider {
+  border-top: 1px dashed #CED4DA;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.read-only-field {
+  font-size: 0.9em;
+}
+
+.read-only-field label {
+  font-weight: 500;
+  color: #555555;
+}
+
+.read-only-field span {
+  color: #777777; /* Slightly lighter for read-only value */
+  padding: 8px 0;
+  display: block;
+}
+
+/* Custom styling for comma-separated tags input to look a bit like tags */
+.metadata-field input[type="text"][id="tags"],
+.metadata-field input[type="text"][id="variables"] {
+  /* Could add more specific styling if needed, but for now, it inherits general input styling */
+}
+
+/* For a more advanced tag display (if not using a library), one might add:
+.tags-display-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px 0;
+}
+.tag-item {
+  background-color: var(--accent-lavender);
+  color: #333;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+This would require JS logic to split the comma-separated string and render these.
+For now, keeping it as a simple text input.
+*/

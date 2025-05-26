@@ -1,11 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
+const User = require('../models/User'); // Import User model
 
-// In-memory store for users (replace with a database in a real application)
-const users = []; 
-
-const JWT_SECRET = process.env.JWT_SECRET || 'your-very-secure-secret'; // Use environment variable
+const JWT_SECRET = process.env.JWT_SECRET || 'your-very-secure-secret';
 
 exports.register = async (req, res) => {
   const errors = validationResult(req);
@@ -16,29 +14,29 @@ exports.register = async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Check if user already exists
-    const userExists = users.find((user) => user.email === email);
-    if (userExists) {
-      return res.status(400).json({ msg: 'User already exists' });
+    // Check if user already exists by email or username
+    let user = await User.findOne({ $or: [{ email }, { username }] });
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists with this email or username' });
     }
+
+    // Create new user instance
+    user = new User({
+      username,
+      email,
+    });
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    user.password_hash = await bcrypt.hash(password, salt);
 
-    // Create new user
-    const newUser = {
-      id: users.length + 1, // simple id generation
-      username,
-      email,
-      password: hashedPassword,
-    };
-    users.push(newUser);
+    // Save user to MongoDB
+    await user.save();
 
     // Generate JWT
     const payload = {
       user: {
-        id: newUser.id,
+        id: user.id, // mongoose provides virtual id getter
       },
     };
 
@@ -48,11 +46,11 @@ exports.register = async (req, res) => {
       { expiresIn: 3600 }, // 1 hour
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.status(201).json({ token }); // 201 for created
       }
     );
   } catch (err) {
-    console.error(err.message);
+    console.error('Register Error:', err.message);
     res.status(500).send('Server error');
   }
 };
@@ -67,13 +65,13 @@ exports.login = async (req, res) => {
 
   try {
     // Check if user exists
-    const user = users.find((user) => user.email === email);
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
     // Compare password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password_hash);
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
@@ -95,7 +93,7 @@ exports.login = async (req, res) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
+    console.error('Login Error:', err.message);
     res.status(500).send('Server error');
   }
 };

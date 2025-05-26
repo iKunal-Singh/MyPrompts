@@ -1,0 +1,94 @@
+.version-history-panel {
+  width: 100%; /* Take full width of its container column */
+  padding: 15px;
+  background-color: #FDFDFD; /* Slightly different from metadata panel for distinction */
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  font-family: 'Inter', sans-serif;
+  color: #333333;
+  max-height: 400px; /* Example max height, adjust as needed */
+  overflow-y: auto;
+  margin-top: 20px; /* Space from other elements if in same column */
+}
+
+.version-history-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.version-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.version-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #F0F0F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.version-item:last-child {
+  border-bottom: none;
+}
+
+.version-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.version-info strong {
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+.version-date {
+  font-size: 0.8em;
+  color: #666666;
+}
+
+.version-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.version-action-btn {
+  background-color: #E9ECEF;
+  color: #333333;
+  border: 1px solid #CED4DA;
+  padding: 5px 10px;
+  font-size: 0.85em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.version-action-btn:hover {
+  background-color: #DEE2E6;
+  border-color: #B9BEC3;
+}
+
+.version-action-btn.preview-btn {
+  /* Optional: specific styling for preview */
+}
+
+.version-action-btn.revert-btn {
+  background-color: var(--accent-lavender); /* A soft accent for revert */
+  border-color: #D6D6F2;
+}
+
+.version-action-btn.revert-btn:hover {
+  background-color: #C0C0E8;
+}

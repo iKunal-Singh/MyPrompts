@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 const USER_SERVICE_URL = process.env.USER_SERVICE_URL;
 const PROJECT_SERVICE_URL = process.env.PROJECT_SERVICE_URL;
 const PROMPT_SERVICE_URL = process.env.PROMPT_SERVICE_URL;
+const AGENT_MANAGEMENT_SERVICE_URL = process.env.AGENT_MANAGEMENT_SERVICE_URL;
 
 // Log requests
 app.use(morgan('dev'));
@@ -106,6 +107,24 @@ if (PROMPT_SERVICE_URL) {
   console.error('PROMPT_SERVICE_URL not defined. Prompt service routes will not be proxied.');
 }
 
+// Proxy to Agent Management Service
+if (AGENT_MANAGEMENT_SERVICE_URL) {
+  console.log(`Agent Management service URL: ${AGENT_MANAGEMENT_SERVICE_URL}`);
+  app.use(
+    '/api/v1/agents',
+    createProxyMiddleware({
+      target: AGENT_MANAGEMENT_SERVICE_URL,
+      changeOrigin: true,
+      // pathRewrite: { '^/api/v1/agents': '/api/v1/agents' }, // Default, no rewrite needed if paths match
+      onError: (err, req, res) => {
+        console.error('Agent Management Service Proxy Error:', err);
+        res.status(500).send('Proxy error to Agent Management Service');
+      },
+    })
+  );
+} else {
+  console.error('AGENT_MANAGEMENT_SERVICE_URL not defined. Agent service routes will not be proxied.');
+}
 
 // Basic health check endpoint for the gateway itself
 app.get('/health', (req, res) => {
@@ -117,6 +136,7 @@ app.listen(PORT, () => {
   if (USER_SERVICE_URL) console.log(`Proxying /api/v1/auth to ${USER_SERVICE_URL}`);
   if (PROJECT_SERVICE_URL) console.log(`Proxying /api/v1/projects to ${PROJECT_SERVICE_URL}`);
   if (PROMPT_SERVICE_URL) console.log(`Proxying /api/v1/prompts and /api/v1/projects/:projectId/prompts to ${PROMPT_SERVICE_URL}`);
+  if (AGENT_MANAGEMENT_SERVICE_URL) console.log(`Proxying /api/v1/agents to ${AGENT_MANAGEMENT_SERVICE_URL}`);
 });
 
 module.exports = app; // For potential testing

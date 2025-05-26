@@ -2,10 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const authRoutes = require('./routes/authRoutes'); // We'll create this later
+const authRoutes = require('./routes/authRoutes');
+const connectDB = require('../../shared/db'); // Import connectDB
+
+// Connect to MongoDB
+connectDB('User-Service');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001; // Corrected port for user-service
 
 // Middleware
 app.use(morgan('dev')); // Logger
