@@ -312,20 +312,20 @@ exports.getPromptById = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(userIdFromHeader) || !mongoose.Types.ObjectId.isValid(promptIdFromParam)) {
     return res.status(400).json({ msg: 'Invalid User ID or Prompt ID format.' });
   }
-
+  
   const userId = new mongoose.Types.ObjectId(userIdFromHeader);
   const promptId = new mongoose.Types.ObjectId(promptIdFromParam);
-  
+
   try {
     const prompt = await Prompt.findOne({ _id: promptId, userId: userId });
-
+    
     if (!prompt) {
-      return res.status(404).json({ msg: 'Prompt not found or user does not have access' });
+      return res.status(404).json({ msg: 'Prompt not found or user does not have access.' });
     }
-    // Ensure full metadata is returned (Mongoose does this by default)
+    
     res.json(prompt);
   } catch (err) {
-    console.error('Get Prompt by ID Error:', err.message);
+    console.error('Get Prompt By ID Error:', err.message);
     res.status(500).send('Server error');
   }
 };

@@ -126,7 +126,6 @@ if (AGENT_MANAGEMENT_SERVICE_URL) {
   console.error('AGENT_MANAGEMENT_SERVICE_URL not defined. Agent service routes will not be proxied.');
 }
 
-
 // Basic health check endpoint for the gateway itself
 app.get('/health', (req, res) => {
     res.status(200).send('API Gateway is healthy');
